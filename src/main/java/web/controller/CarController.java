@@ -8,14 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class CarController {
 
-    @Autowired
+
     private CarService carService;
+
+    @Autowired
+    public void setCarService(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping(value = "/cars")
     public String viewCars(@RequestParam(defaultValue = "5") Integer count , Model model) {
